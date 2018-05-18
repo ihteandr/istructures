@@ -1,5 +1,5 @@
 
-export class Stack {
+export class Queue {
     constructor() {
         this._arr = [];
     }
@@ -7,7 +7,7 @@ export class Stack {
         this._arr.push(item);
     }
     get() {
-        this._arr.pop();
+        this._arr.shift();
     }
     length() {
         return this._arr.length;

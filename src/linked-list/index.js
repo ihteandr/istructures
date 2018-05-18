@@ -5,19 +5,6 @@ export class LinkedList {
         this.top = null;
         this.length = 0;
     }
-    removeAt(index) {
-        const info = this._getCurrentAndPrev(index);
-        if (info) {
-            if (info.prev) {
-                info.prev.next = info.current.next;
-            } else {
-                this.top = info.current.next;
-            }
-            this.length--;
-            return info.current.value;
-        }
-        return null;
-    }
     indexOf(value) {
         let index = 0;
         let node = this.top;
@@ -52,145 +39,53 @@ export class LinkedList {
     }
     reverse(isReal = false) {
         if (isReal) {
-            let iPrev = null;
-            let iNode = this.top;
-            let iIndex = 0;
-            while(iNode) {
-                let jNode = iNode.next;
-                let jIndex = iIndex + 1;
-                if (iIndex > Math.ceil(this.length/2)){
-                    break;
-                }
-                let jPrev = iNode;
-                while(jNode) {
-                    if (jIndex === this.length - iIndex - 1) {
-                        this._swap(iPrev, iNode, jPrev, jNode);
-                        let temp = jNode;
-                        jNode = iNode;
-                        iNode = temp;
-                        break;
-                    }
-                    jIndex++;
-                    jPrev = jNode;
-                    jNode = jNode.next;
-                }
-                iPrev = iNode;
-                iNode = iNode.next;
-                iIndex++;
+            let prev = null;
+            let current = this.top;
+            while (current) {
+                const nextNode = current.next;
+                current.next = prev;
+                prev = current;
+                current = nextNode;
             }
+            this.top = prev;
             return this;
         }
-        let newList = new LinkedList();
+        const newList = new LinkedList();
         this.toArray().reverse().forEach((value) => {
             newList.push(value);
         });
         return newList;
     }
-    _swap(iPrev, iNode, jPrev, jNode) {
-        let jNext = jNode.next;
-        if (iPrev) {
-            iPrev.next = jNode;
-        } else {
-            this.top = jNode;
-        }
-        if (jPrev) {
-            jPrev.next = iNode;
-        } else {
-            this.top = iNode;
-        }
-        if (jNode !== iNode.next) {
-            jNode.next = iNode.next;
-        } else {
-            jNode.next = iNode;
-        }
-        if (iNode !== jNext) {
-            iNode.next = jNext;
-        } else {
-            iNode.next = jNode;
-        }
-        console.assert(!this._isContainsCircular(), 'contains circular', arguments);
-        console.assert(!this._isLengthChanged(), 'length changed', arguments);
-    }
     slice(index, length) {
         return slice(this, index, length);
-    }
-    get(index) {
-        const info = this._getCurrentAndPrev(index);
-        return getValue(info ? info.current : null);
-    }
-    getNode(index) {
-        const info = this._getCurrentAndPrev(index);
-        return info ? info.current : null;
-    }
-    forEach(fn) {
-        if (!this.top) {
-            return;
-        }
-        let node = this.top;
-        let index = 0;
-        while (node) {
-            fn(node, index);
-            index++;
-            node = node.next;
-        }
-    }
-    _isContainsCircular() {
-        let node = this.top;
-        let index = 0;
-        while(node) {
-            let subIndex = index + 1;
-            let subNode = node.next;
-            while(subNode && subIndex > index) {
-                if (subNode === node) {
-                    return true;
-                }
-                subNode = subNode.next;
-            }
-            node = node.next;
-            index++;
-        }
-        return false;
-    }
-    _isLengthChanged() {
-        let index = 0;
-        let node = this.top;
-        while(node) {
-            node = node.next;
-            index++;
-        }
-        return index === this.length - 1;
     }
     sort(comparator, isReal = false) {
         const _comparator = comparator || function defaultComparator(a, b) {
             return a > b;
         };
-        if(!isReal) {
+        if (!isReal) {
             return mergeSort(this, _comparator);
         }
         let iPrev = null;
-        let jPrev = null;
         let iNode = this.top;
-        let iIndex = 0;
-        while(iNode) {
-            let jNode = iNode.next;
-            let jIndex = iIndex + 1;
-            let jPrev = iNode;
-            while(jNode) {
-                if (jIndex > iIndex) {
-                    let compareResult = _comparator(iNode.value, jNode.value);
-                    if(compareResult > 0 || compareResult === true) {
-                        this._swap(iPrev, iNode, jPrev, jNode);
-                        let temp = jNode;
-                        jNode = iNode;
-                        iNode = temp;
-                    }
+        while (iNode) {
+            let jNode = iNode;
+            let prevMinNode = null;
+            let min = iNode.value;
+            while (jNode.next) {
+                const compareResult = _comparator(min, jNode.next.value);
+                if (compareResult > 0) {
+                    min = jNode.next.value;
+                    prevMinNode = jNode;
                 }
-                jPrev = jNode;
                 jNode = jNode.next;
-                jIndex++;
+            }
+            if (prevMinNode) {
+                const nextNode = prevMinNode.next;
+                this._swap(iPrev, iNode, prevMinNode, nextNode);
+                iNode = nextNode;
             }
             iPrev = iNode;
-            iIndex++;
             iNode = iNode.next;
         }
         return this;
@@ -212,9 +107,34 @@ export class LinkedList {
         }
         return false;
     }
+    removeAt(index) {
+        const info = this._getCurrentAndPrev(index);
+        if (info) {
+            if (info.prev) {
+                info.prev.next = info.current.next;
+            } else {
+                this.top = info.current.next;
+            }
+            this.length--;
+            return info.current.value;
+        }
+        return null;
+    }
     clear() {
         this.length = 0;
         this.top = null;
+    }
+    forEach(fn) {
+        if (!this.top) {
+            return;
+        }
+        let node = this.top;
+        let index = 0;
+        while (node) {
+            fn(node, index);
+            index++;
+            node = node.next;
+        }
     }
     shift() {
         if (!this.top) {
@@ -269,6 +189,14 @@ export class LinkedList {
         node.next = null;
         return lastNode.value;
     }
+    get(index) {
+        const info = this._getCurrentAndPrev(index);
+        return getValue(info ? info.current : null);
+    }
+    getNode(index) {
+        const info = this._getCurrentAndPrev(index);
+        return info ? info.current : null;
+    }
     getFirst() {
         return getValue(this.top);
     }
@@ -284,6 +212,7 @@ export class LinkedList {
         }
         return arr;
     }
+    // private methods
     _getCurrentAndPrev(index) {
         if (!this.top || index < 0) {
             return null;
@@ -315,5 +244,60 @@ export class LinkedList {
     }
     _setTop(node) {
         this.top = node;
+    }
+    _clearMarkers() {
+        let node = this.top;
+        while (node) {
+            node.marker = undefined;
+            node = node.next;
+        }
+    }
+    _isContainsCircular() {
+        let node = this.top;
+        let isContainsCircular = false;
+        while (node) {
+            if (node.marker) {
+                isContainsCircular = true;
+                break;
+            }
+            node.marker = true;
+            node = node.next;
+        }
+        this._clearMarkers();
+        return isContainsCircular;
+    }
+    _isLengthChanged() {
+        let index = 0;
+        let node = this.top;
+        while (node) {
+            node = node.next;
+            index++;
+        }
+        return index === this.length - 1;
+    }
+    _swap(iPrev, iNode, jPrev, jNode) {
+        const jNext = jNode.next;
+        if (iPrev) {
+            iPrev.next = jNode;
+        } else {
+            this.top = jNode;
+        }
+        if (jPrev) {
+            jPrev.next = iNode;
+        } else {
+            this.top = iNode;
+        }
+        if (jNode !== iNode.next) {
+            jNode.next = iNode.next;
+        } else {
+            jNode.next = iNode;
+        }
+        if (iNode !== jNext) {
+            iNode.next = jNext;
+        } else {
+            iNode.next = jNode;
+        }
+        console.assert(!this._isContainsCircular(), 'contains circular', arguments);
+        console.assert(!this._isLengthChanged(), 'length changed', arguments);
     }
 }

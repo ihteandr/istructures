@@ -91,26 +91,26 @@ describe('LinkedList spec', () => {
         expect(list.slice(0).toArray().join()).toBe(list.toArray().join());
     });
     it('check sort', () => {
-        let prev = null;
-        let reversed = list.reverse();
-        let sorted = reversed.sort(null, true).toArray();
-        expect(sorted.length).toBe(reversed.length);
-        sorted.forEach((num) => {
-            if (prev) {
-                expect(num >= prev).toBe(true);
+        const newList = new LinkedList();
+        for (let i = 0; i < 50; i++) {
+            newList.push(Math.floor(Math.random() * 10000));
+        }
+        const sorted = newList.sort(null, true).toArray();
+        for (let i = 1; i < sorted.length; i++) {
+            if (sorted[i - 1] > sorted[i]) {
+                expect(true).toBe(false);
+                break;
             }
-            prev = num;
-        });
+        }
     });
     it('check real reverse', () => {
-        let prev = null;
-        let arr = list.sort(null).reverse(true).toArray();
+        const arr = list.sort(null).reverse(true).toArray();
         expect(arr.length).toBe(list.length);
-        arr.forEach((num) => {
-            if (prev) {
-                expect(num <= prev).toBe(true);
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i - 1] < arr[i]) {
+                expect(true).toBe(false);
+                break;
             }
-            prev = num;
-        });
+        }
     });
 });
