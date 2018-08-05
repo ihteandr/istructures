@@ -1,6 +1,4 @@
-/**
- * Created by Fujitsu on 6/6/2014.
- */
+
 export function insertion_sort(items) {
     const len = items.length;
     let value;

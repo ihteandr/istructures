@@ -1,11 +1,4 @@
-/**
- * Created by Fujitsu on 6/5/2014.
- */
-function swap(arr, firstIndex, secondIndex) {
-    const temp = arr[firstIndex];
-    arr[firstIndex] = arr[secondIndex];
-    arr[secondIndex] = temp;
-}
+import { swap } from './swap';
 
 export function selection_sort(arr) {
     const len = arr.length;

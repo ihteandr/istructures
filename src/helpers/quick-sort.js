@@ -1,12 +1,4 @@
-/**
- * Created by Fujitsu on 6/5/2014.
- */
-
-function swap(arr, first, second) {
-    const temp = arr[first];
-    arr[first] = arr[second];
-    arr[second] = temp;
-}
+import { swap } from './swap';
 
 function partition(arr, first, second) {
     const middle = arr[Math.floor((first + second) / 2)];
