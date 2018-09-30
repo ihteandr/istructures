@@ -50,7 +50,6 @@ describe('helpers spec', () => {
         arr = helpers.quick_sort(arr);
         for (let i = 1; i < arr.length; i++) {
             if (arr[i - 1] > arr[i]) {
-                console.log('arr', arr);
                 expect(true).toBe(false);
                 break;
             }
