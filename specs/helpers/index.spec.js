@@ -7,7 +7,8 @@ describe('helpers spec', () => {
     beforeEach(() => {
         arr = [];
         for (let i = 0; i < 5000; i++) {
-            arr.push(Math.floor(Math.random() * 100));
+            const num = Math.floor(Math.random() * 100);
+            arr.push((num % 2 === 0 ? -1 : 1) * num);
         }
     });
     it('bubble sort test', () => {
@@ -54,5 +55,26 @@ describe('helpers spec', () => {
                 break;
             }
         }
+    });
+
+    it('k minimum test', () => {
+        const origin = arr.slice();
+        const sorted = helpers.quick_sort(arr);
+        const minNumbers = [1, 2, 3, 4, 15];
+        minNumbers.forEach((number) => {
+            const minimum = helpers.minimum(origin, number);
+            expect(minimum).toBe(sorted[number - 1]);
+        });
+    });
+
+    
+    it('k maximum test', () => {
+        const origin = arr.slice();
+        const sorted = helpers.quick_sort(arr);
+        const maxNumbers = [1, 2, 3, 4, 15];
+        maxNumbers.forEach((number) => {
+            const max = helpers.maximum(origin, number);
+            expect(max).toBe(sorted[sorted.length - number - 1]);
+        });
     });
 });

@@ -23,7 +23,7 @@ function partition(arr, first, second) {
 
 export function quick_sort(arr, first, second) {
     first = first || 0;
-    second = second === undefined ?  arr.length - 1 : second;
+    second = second === undefined ? arr.length - 1 : second;
     const index = partition(arr, first, second);
     if (first < index - 1) {
         quick_sort(arr, first, index - 1);

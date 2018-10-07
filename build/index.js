@@ -113,7 +113,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.bubble_sort = bubble_sort;\n/**\n * Created by Fujitsu on 6/4/2014.\n */\n\nfunction swap(arr, firstIndex, secondIndex) {\n    var temp = arr[firstIndex];\n    arr[firstIndex] = arr[secondIndex];\n    arr[secondIndex] = temp;\n}\n\nfunction bubble_sort(arr) {\n    var len = arr.length;\n    var i = 0;\n    var j = void 0;\n    var stop = void 0;\n    for (i; i < len; i++) {\n        for (j = 0, stop = len - i; j < stop; j++) {\n            if (arr[j] > arr[j + 1]) {\n                swap(arr, j, j + 1);\n            }\n        }\n    }\n    return arr;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/bubble-sort.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.bubble_sort = bubble_sort;\n\nvar _swap = __webpack_require__(/*! ./swap */ \"./src/helpers/swap.js\");\n\nfunction bubble_sort(arr) {\n    var len = arr.length;\n    var i = 0;\n    var j = void 0;\n    var stop = void 0;\n    for (i; i < len; i++) {\n        for (j = 0, stop = len - i; j < stop; j++) {\n            if (arr[j] > arr[j + 1]) {\n                (0, _swap.swap)(arr, j, j + 1);\n            }\n        }\n    }\n    return arr;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/bubble-sort.js?");
 
 /***/ }),
 
@@ -125,7 +125,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _bubbleSort = __webpack_require__(/*! ./bubble-sort */ \"./src/helpers/bubble-sort.js\");\n\nObject.keys(_bubbleSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _bubbleSort[key];\n    }\n  });\n});\n\nvar _insertionSort = __webpack_require__(/*! ./insertion-sort */ \"./src/helpers/insertion-sort.js\");\n\nObject.keys(_insertionSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _insertionSort[key];\n    }\n  });\n});\n\nvar _mergeSort = __webpack_require__(/*! ./merge-sort */ \"./src/helpers/merge-sort.js\");\n\nObject.keys(_mergeSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _mergeSort[key];\n    }\n  });\n});\n\nvar _quickSort = __webpack_require__(/*! ./quick-sort */ \"./src/helpers/quick-sort.js\");\n\nObject.keys(_quickSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _quickSort[key];\n    }\n  });\n});\n\nvar _selectionSort = __webpack_require__(/*! ./selection-sort */ \"./src/helpers/selection-sort.js\");\n\nObject.keys(_selectionSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _selectionSort[key];\n    }\n  });\n});\n\n//# sourceURL=webpack://isctructers/./src/helpers/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _bubbleSort = __webpack_require__(/*! ./bubble-sort */ \"./src/helpers/bubble-sort.js\");\n\nObject.keys(_bubbleSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _bubbleSort[key];\n    }\n  });\n});\n\nvar _insertionSort = __webpack_require__(/*! ./insertion-sort */ \"./src/helpers/insertion-sort.js\");\n\nObject.keys(_insertionSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _insertionSort[key];\n    }\n  });\n});\n\nvar _mergeSort = __webpack_require__(/*! ./merge-sort */ \"./src/helpers/merge-sort.js\");\n\nObject.keys(_mergeSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _mergeSort[key];\n    }\n  });\n});\n\nvar _quickSort = __webpack_require__(/*! ./quick-sort */ \"./src/helpers/quick-sort.js\");\n\nObject.keys(_quickSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _quickSort[key];\n    }\n  });\n});\n\nvar _selectionSort = __webpack_require__(/*! ./selection-sort */ \"./src/helpers/selection-sort.js\");\n\nObject.keys(_selectionSort).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _selectionSort[key];\n    }\n  });\n});\n\nvar _minimum = __webpack_require__(/*! ./minimum */ \"./src/helpers/minimum.js\");\n\nObject.keys(_minimum).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _minimum[key];\n    }\n  });\n});\n\nvar _maximum = __webpack_require__(/*! ./maximum */ \"./src/helpers/maximum.js\");\n\nObject.keys(_maximum).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function get() {\n      return _maximum[key];\n    }\n  });\n});\n\n//# sourceURL=webpack://isctructers/./src/helpers/index.js?");
 
 /***/ }),
 
@@ -137,7 +137,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.insertion_sort = insertion_sort;\n/**\n * Created by Fujitsu on 6/6/2014.\n */\nfunction insertion_sort(items) {\n    var len = items.length;\n    var value = void 0;\n    var i = void 0;\n    var j = void 0;\n\n    for (i = 0; i < len; i++) {\n        value = items[i];\n\n        for (j = i - 1; j > -1 && items[j] > value; j--) {\n            items[j + 1] = items[j];\n        }\n\n        items[j + 1] = value;\n    }\n\n    return items;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/insertion-sort.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.insertion_sort = insertion_sort;\nfunction insertion_sort(items) {\n    var len = items.length;\n    var value = void 0;\n    var i = void 0;\n    var j = void 0;\n\n    for (i = 0; i < len; i++) {\n        value = items[i];\n\n        for (j = i - 1; j > -1 && items[j] > value; j--) {\n            items[j + 1] = items[j];\n        }\n\n        items[j + 1] = value;\n    }\n\n    return items;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/insertion-sort.js?");
+
+/***/ }),
+
+/***/ "./src/helpers/maximum.js":
+/*!********************************!*\
+  !*** ./src/helpers/maximum.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.maximum = maximum;\nfunction maximum(arr, k) {\n    var maximums = [arr[0]];\n    k = k || 1;\n    for (var i = 1; i < arr.length; i++) {\n        for (var j = 0; j < maximums.length; j++) {\n            if (maximums[j] < arr[i]) {\n                maximums.splice(j, 0, arr[i]);\n                if (maximums.length > k) {\n                    maximums.splice(-1, 1);\n                }\n                break;\n            }\n        }\n    }\n    return maximums[k - 1];\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/maximum.js?");
 
 /***/ }),
 
@@ -153,6 +165,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 /***/ }),
 
+/***/ "./src/helpers/minimum.js":
+/*!********************************!*\
+  !*** ./src/helpers/minimum.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.minimum = minimum;\nfunction minimum(arr, k) {\n    var minimums = [arr[0]];\n    k = k || 1;\n    for (var i = 1; i < arr.length; i++) {\n        for (var j = 0; j < minimums.length; j++) {\n            if (minimums[j] > arr[i]) {\n                minimums.splice(j, 0, arr[i]);\n                if (minimums.length > k) {\n                    minimums.splice(-1, 1);\n                }\n                break;\n            }\n        }\n    }\n    return minimums[k - 1];\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/minimum.js?");
+
+/***/ }),
+
 /***/ "./src/helpers/quick-sort.js":
 /*!***********************************!*\
   !*** ./src/helpers/quick-sort.js ***!
@@ -161,7 +185,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.quick_sort = quick_sort;\n/**\n * Created by Fujitsu on 6/5/2014.\n */\n\nfunction swap(arr, first, second) {\n    var temp = arr[first];\n    arr[first] = arr[second];\n    arr[second] = temp;\n}\n\nfunction partition(arr, first, second) {\n    var middle = arr[Math.floor((first + second) / 2)];\n    var i = first;\n    var j = second;\n\n    while (i <= j) {\n        while (arr[i] < middle) {\n            i++;\n        }\n        while (arr[j] > middle) {\n            j--;\n        }\n        if (i <= j) {\n            swap(arr, i, j);\n            i++;\n            j--;\n        }\n    }\n    return i;\n}\n\nfunction quick_sort(arr, first, second) {\n    first = first || 0;\n    second = second === undefined ? arr.length - 1 : second;\n    var index = partition(arr, first, second);\n    if (first < index - 1) {\n        quick_sort(arr, first, index - 1);\n    }\n    if (index < second) {\n        quick_sort(arr, index, second);\n    }\n    return arr;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/quick-sort.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.quick_sort = quick_sort;\n\nvar _swap = __webpack_require__(/*! ./swap */ \"./src/helpers/swap.js\");\n\nfunction partition(arr, first, second) {\n    var middle = arr[Math.floor((first + second) / 2)];\n    var i = first;\n    var j = second;\n\n    while (i <= j) {\n        while (arr[i] < middle) {\n            i++;\n        }\n        while (arr[j] > middle) {\n            j--;\n        }\n        if (i <= j) {\n            (0, _swap.swap)(arr, i, j);\n            i++;\n            j--;\n        }\n    }\n    return i;\n}\n\nfunction quick_sort(arr, first, second) {\n    first = first || 0;\n    second = second === undefined ? arr.length - 1 : second;\n    var index = partition(arr, first, second);\n    if (first < index - 1) {\n        quick_sort(arr, first, index - 1);\n    }\n    if (index < second) {\n        quick_sort(arr, index, second);\n    }\n    return arr;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/quick-sort.js?");
 
 /***/ }),
 
@@ -173,7 +197,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.selection_sort = selection_sort;\n/**\n * Created by Fujitsu on 6/5/2014.\n */\nfunction swap(arr, firstIndex, secondIndex) {\n    var temp = arr[firstIndex];\n    arr[firstIndex] = arr[secondIndex];\n    arr[secondIndex] = temp;\n}\n\nfunction selection_sort(arr) {\n    var len = arr.length;\n\n    for (var i = 0; i < len; i++) {\n        var min = i;\n        for (var j = i; j < len; j++) {\n            if (arr[min] > arr[j]) {\n                min = j;\n            }\n        }\n        swap(arr, min, i);\n    }\n    return arr;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/selection-sort.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.selection_sort = selection_sort;\n\nvar _swap = __webpack_require__(/*! ./swap */ \"./src/helpers/swap.js\");\n\nfunction selection_sort(arr) {\n    var len = arr.length;\n\n    for (var i = 0; i < len; i++) {\n        var min = i;\n        for (var j = i; j < len; j++) {\n            if (arr[min] > arr[j]) {\n                min = j;\n            }\n        }\n        (0, _swap.swap)(arr, min, i);\n    }\n    return arr;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/selection-sort.js?");
+
+/***/ }),
+
+/***/ "./src/helpers/swap.js":
+/*!*****************************!*\
+  !*** ./src/helpers/swap.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.swap = swap;\nfunction swap(arr, first, second) {\n    var temp = arr[first];\n    arr[first] = arr[second];\n    arr[second] = temp;\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/swap.js?");
 
 /***/ }),
 
