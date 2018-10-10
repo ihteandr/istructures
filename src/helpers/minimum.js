@@ -1,7 +1,10 @@
 
 
 export function minimum(arr, k) {
-    const minimums = [arr[0]];
+    if (arr.length < k) {
+        return null;
+    }
+    const minimums = arr.slice(0, k);
     k = k || 1;
     for (let i = 1; i < arr.length; i++) {
         for (let j = 0; j < minimums.length; j++) {

@@ -149,7 +149,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.maximum = maximum;\nfunction maximum(arr, k) {\n    var maximums = [arr[0]];\n    k = k || 1;\n    for (var i = 1; i < arr.length; i++) {\n        for (var j = 0; j < maximums.length; j++) {\n            if (maximums[j] < arr[i]) {\n                maximums.splice(j, 0, arr[i]);\n                if (maximums.length > k) {\n                    maximums.splice(-1, 1);\n                }\n                break;\n            }\n        }\n    }\n    return maximums[k - 1];\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/maximum.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.maximum = maximum;\nfunction maximum(arr, k) {\n    var maximums = arr.slice(0, k);\n    k = k || 1;\n    for (var i = 1; i < arr.length; i++) {\n        for (var j = 0; j < maximums.length; j++) {\n            if (maximums[j] < arr[i]) {\n                maximums.splice(j, 0, arr[i]);\n                if (maximums.length > k) {\n                    maximums.splice(-1, 1);\n                }\n                break;\n            }\n        }\n    }\n    return maximums[k - 1];\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/maximum.js?");
 
 /***/ }),
 
@@ -173,7 +173,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.minimum = minimum;\nfunction minimum(arr, k) {\n    var minimums = [arr[0]];\n    k = k || 1;\n    for (var i = 1; i < arr.length; i++) {\n        for (var j = 0; j < minimums.length; j++) {\n            if (minimums[j] > arr[i]) {\n                minimums.splice(j, 0, arr[i]);\n                if (minimums.length > k) {\n                    minimums.splice(-1, 1);\n                }\n                break;\n            }\n        }\n    }\n    return minimums[k - 1];\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/minimum.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.minimum = minimum;\nfunction minimum(arr, k) {\n    var minimums = arr.slice(0, k);\n    k = k || 1;\n    for (var i = 1; i < arr.length; i++) {\n        for (var j = 0; j < minimums.length; j++) {\n            if (minimums[j] > arr[i]) {\n                minimums.splice(j, 0, arr[i]);\n                if (minimums.length > k) {\n                    minimums.splice(-1, 1);\n                }\n                break;\n            }\n        }\n    }\n    return minimums[k - 1];\n}\n\n//# sourceURL=webpack://isctructers/./src/helpers/minimum.js?");
 
 /***/ }),
 

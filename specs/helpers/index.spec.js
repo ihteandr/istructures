@@ -57,24 +57,25 @@ describe('helpers spec', () => {
         }
     });
 
-    it('k minimum test', () => {
-        const origin = arr.slice();
+    it('k minimum test:worse case', () => {
+        const origin = helpers.quick_sort(arr.slice());
         const sorted = helpers.quick_sort(arr);
         const minNumbers = [1, 2, 3, 4, 15];
         minNumbers.forEach((number) => {
             const minimum = helpers.minimum(origin, number);
             expect(minimum).toBe(sorted[number - 1]);
         });
+        expect(helpers.minimum([1], 2).toBe(null);
     });
-
     
-    it('k maximum test', () => {
-        const origin = arr.slice();
+    it('k maximum test:warse case', () => {
+        const origin = helpers.quick_sort(arr.slice()).reverse();
         const sorted = helpers.quick_sort(arr);
         const maxNumbers = [1, 2, 3, 4, 15];
         maxNumbers.forEach((number) => {
             const max = helpers.maximum(origin, number);
             expect(max).toBe(sorted[sorted.length - number - 1]);
         });
+        expect(helpers.maximum([1], 2).toBe(null);
     });
 });

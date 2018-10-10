@@ -1,6 +1,9 @@
 
 export function maximum(arr, k) {
-    const maximums = [arr[0]];
+    if (arr.length < k) {
+        return null;
+    }
+    const maximums = arr.slice(0, k);
     k = k || 1;
     for (let i = 1; i < arr.length; i++) {
         for (let j = 0; j < maximums.length; j++) {
