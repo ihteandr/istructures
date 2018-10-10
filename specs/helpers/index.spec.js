@@ -57,25 +57,65 @@ describe('helpers spec', () => {
         }
     });
 
-    it('k minimum test:worse case', () => {
-        const origin = helpers.quick_sort(arr.slice());
-        const sorted = helpers.quick_sort(arr);
-        const minNumbers = [1, 2, 3, 4, 15];
+    it('k minimum test:reverse order', () => {
+        const sorted = helpers.quick_sort(arr.slice());
+        const reverseOrder = sorted.slice().reverse(); 
+        const minNumbers = [1, 2, 3, 4, 15, 100, arr.length];
         minNumbers.forEach((number) => {
-            const minimum = helpers.minimum(origin, number);
-            expect(minimum).toBe(sorted[number - 1]);
+            expect(helpers.minimum(reverseOrder, number)).toBe(sorted[number - 1]);
         });
-        expect(helpers.minimum([1], 2).toBe(null);
+    });
+
+    it('k minimum test:random order', () => {
+        const randomOrder = arr.slice();
+        const sorted = helpers.quick_sort(arr.slice());
+        const minNumbers = [1, 2, 3, 4, 15, 100, arr.length];
+        minNumbers.forEach((number) => {
+            expect(helpers.minimum(randomOrder, number)).toBe(sorted[number - 1]);
+        });
     });
     
-    it('k maximum test:warse case', () => {
-        const origin = helpers.quick_sort(arr.slice()).reverse();
-        const sorted = helpers.quick_sort(arr);
-        const maxNumbers = [1, 2, 3, 4, 15];
-        maxNumbers.forEach((number) => {
-            const max = helpers.maximum(origin, number);
-            expect(max).toBe(sorted[sorted.length - number - 1]);
+    it('k minimum test:sorted', () => {
+        const sorted = helpers.quick_sort(arr.slice());
+        const minNumbers = [1, 2, 3, 4, 15, 100, arr.length];
+        minNumbers.forEach((number) => {
+            expect(helpers.minimum(sorted, number)).toBe(sorted[number - 1]);
         });
-        expect(helpers.maximum([1], 2).toBe(null);
     });
+    
+    it('k minimum test: null case', () => {
+        expect(helpers.minimum([1], 2)).toBe(null);
+    })
+
+    it('k maximum test: null case', () => {
+        expect(helpers.maximum([1], 2)).toBe(null);
+    })
+
+    it('k maximum test:reverse order', () => {
+        const reverseOrder = helpers.quick_sort(arr.slice()).reverse();
+        const sorted = helpers.quick_sort(arr.slice());
+        const maxNumbers = [1, 2, 3, 4, 15, 100, arr.length];
+        maxNumbers.forEach((number) => {
+            expect(helpers.maximum(reverseOrder, number)).toBe(sorted[sorted.length - number - 1]);
+        });
+    });
+
+    it('k maximum test:random order', () => {
+        const randomOrder = arr.slice();
+        const sorted = helpers.quick_sort(arr.slice());
+        const maxNumbers = [1, 2, 3, 4, 15, 100, arr.length];
+        maxNumbers.forEach((number) => {
+            expect(helpers.maximum(randomOrder, number)).toBe(sorted[sorted.length - number - 1]);
+        });
+    });
+
+    it('k maximum test:sorted', () => {
+        const sorted = helpers.quick_sort(arr.slice());
+        const maxNumbers = [1, 2, 3, 4, 15, 100, arr.length];
+        maxNumbers.forEach((number) => {
+            expect(helpers.maximum(sorted, number)).toBe(sorted[sorted.length - number - 1]);
+        });
+    })
+
+
 });
