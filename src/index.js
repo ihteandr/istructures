@@ -3,6 +3,7 @@ import { Stack } from './stack';
 import { Queue } from './queue';
 import { PriorityQueue } from './priority-queue';
 import { BinaryTree } from './binary-three';
+import { Graph, GraphNode } from './graph';
 import * as helpers from './helpers';
 
 const istructers = {
@@ -11,6 +12,8 @@ const istructers = {
     Queue,
     PriorityQueue,
     BinaryTree,
+    Graph,
+    GraphNode,
     helpers,
 };
 
